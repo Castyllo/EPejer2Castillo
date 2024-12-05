@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Registro de Evento Running</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+            body {
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(135deg, #1e3c72, #2a5298);
+                animation: gradientBackground 8s ease infinite;
+                font-family: 'Arial', sans-serif;
+            }
+
+            @keyframes gradientBackground {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            .form-container {
+                background: white;
+                padding: 20px 30px;
+                border-radius: 15px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                animation: fadeIn 1s ease-out;
+                max-width: 500px;
+                width: 100%;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            h1 {
+                font-size: 2rem;
+                color: #333;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            button {
+                background: linear-gradient(90deg, #4facfe, #00f2fe);
+                border: none;
+                padding: 10px;
+                font-size: 1rem;
+                font-weight: bold;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            button:hover {
+                background: linear-gradient(90deg, #00f2fe, #4facfe);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="form-container">
+            <h1>Registro de Evento Running</h1>
+            <form action="/event-registration" method="post" th:object="${eventRegistration}">
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">Nombres:</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Apellidos:</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="dni" class="form-label">Número de DNI:</label>
+                    <input type="text" class="form-control" id="dni" name="dni" th:field="*{dni}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="residence" class="form-label">Lugar de Residencia:</label>
+                    <input type="text" class="form-control" id="residence" name="residence" th:field="*{residence}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="emergencyContact" class="form-label">Número de Contacto de Emergencia:</label>
+                    <input type="text" class="form-control" id="emergencyContact" name="emergencyContact" th:field="*{emergencyContact}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="personalPhone" class="form-label">Número de Teléfono Personal:</label>
+                    <input type="text" class="form-control" id="personalPhone" name="personalPhone" th:field="*{personalPhone}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="bloodType" class="form-label">Tipo de Sangre:</label>
+                    <input type="text" class="form-control" id="bloodType" name="bloodType" th:field="*{bloodType}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="allergies" class="form-label">¿A qué es alérgico?:</label>
+                    <input type="text" class="form-control" id="allergies" name="allergies" th:field="*{allergies}">
+                </div>
+                <div class="mb-3">
+                    <label for="runningKm" class="form-label">Número de Kilómetros que correrá:</label>
+                    <input type="text" class="form-control" id="runningKm" name="runningKm" th:field="*{runningKm}" required>
+                </div>
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </body>
+</html>
